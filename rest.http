@@ -1,0 +1,21 @@
+http://localhost:8000/api-auth/csrf
+credentials: include
+
+###
+POST http://localhost:8000/presences/ HTTP/1.1
+content-type: application/json
+
+{   
+    "user": 2,
+    "event": 1
+}
+
+###
+PATCH http://localhost:8000/presences/5/ HTTP/1.1
+content-type: application/json
+
+{   
+   "is_confirmed": true
+}
+###
+DELETE http://localhost:8000/presences/7/ HTTP/1.1

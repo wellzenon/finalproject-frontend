@@ -1,0 +1,28 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.6.2",
+    "@cloudinary/base": "^1.0.0-beta.3",
+    "@cloudinary/react": "^1.0.0-beta.8",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "date-fns": "^2.21.3",
+    "formik": "^2.2.8",
+    "framer-motion": "^4.1.17",
+    "next": "10.2.2",
+    "react": "17.0.2",
+    "react-datepicker": "^3.8.0",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "react-select": "^4.3.1",
+    "swr": "^0.5.6",
+    "yup": "^0.32.9"
+  }
+}
