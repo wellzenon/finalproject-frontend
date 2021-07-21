@@ -11,11 +11,11 @@ content-type: application/json
 }
 
 ###
-PATCH http://localhost:8000/presences/5/ HTTP/1.1
+PATCH http://localhost:8000/presences/2/ HTTP/1.1
 content-type: application/json
 
 {   
-   "is_confirmed": true
+   "is_interested": true
 }
 ###
 DELETE http://localhost:8000/presences/7/ HTTP/1.1
