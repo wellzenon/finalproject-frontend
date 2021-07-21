@@ -1,29 +1,27 @@
-function Event({ event }) {
-  console.log(event);
-  return <>{JSON.stringify(event)}</>;
+import React from "react";
+import { useRouter } from "next/router";
+import { Text } from "@chakra-ui/react";
+
+const friendlyTime = (time, locale) => {
+  const rtl = new Intl.RelativeTimeFormat(locale);
+  const format = rtl.format(new Date(time));
+  console.log({ format, time, locale });
+
+  return time;
+};
+export default function Index({ events }) {
+  const { locale } = useRouter();
+  return events.map((event, key) => (
+    <Text key={key}>{friendlyTime(event.start, locale)}</Text>
+  ));
 }
 
-export async function getStaticPaths() {
-  const res = await fetch(`http://127.0.0.1:8000/events/`);
+export async function getStaticProps() {
+  const res = await fetch("http://127.0.0.1:8000/events/");
   const events = await res.json();
 
-  const paths = events.map((event) => ({ params: { slug: event.slug } }));
-
   return {
-    paths,
-    fallback: true,
+    props: { events },
+    revalidate: 10,
   };
 }
-
-export async function getStaticProps({ params }) {
-  const res = await fetch(`http://127.0.0.1:8000/events/${params.slug}`);
-  const event = await res.json();
-
-  return {
-    props: {
-      event,
-    },
-  };
-}
-
-export default Event;

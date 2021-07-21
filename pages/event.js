@@ -76,7 +76,9 @@ const EventForm = () => {
 
     const { ok, json } = await postEvent(newEvent);
     setSubmitting(false);
-    ok ? Router.push(`/events/${json.id}`) : setInfo(json);
+    ok
+      ? Router.push(`/events/${json.id}`)
+      : setInfo(json || "Can't create event");
   };
 
   return (
@@ -86,58 +88,58 @@ const EventForm = () => {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        <Form>
-          <Center>
-            <Stack
-              spacing={4}
-              padding={4}
-              width="100%"
-              maxWidth="50rem"
-              alignSelf="center"
-            >
-              {info && (
-                <Alert status="warning" variant="solid" borderRadius={5}>
-                  <AlertIcon />
-                  {info}
-                </Alert>
-              )}
-              <ImageInput
-                label="Event picture"
-                picture={picture}
-                setPicture={setPicture}
-              />
-              <TextInput
-                label="Event name"
-                name="name"
-                placeholder="Type the event name here"
-              />
-              <TextInput
-                label="Description"
-                name="description"
-                placeholder="Type the event description here"
-              />
-              <TextInput
-                label="Price"
-                name="price"
-                placeholder="Type the event price here"
-              />
-              <Stack direction="row">
-                <DateInput label="Start date" name="startDate" />
-                <TimeInput label="Start time" name="startTime" />
-              </Stack>
-              {hasEndDate && (
-                <Stack direction="row">
-                  <DateInput label="End date" name="endDate" />
-                  <TimeInput label="End time" name="endTime" />
-                </Stack>
-              )}
-              <Button variant="link" onClick={() => setHasEndDate(!hasEndDate)}>
-                {hasEndDate ? "-" : "+"} End date
-              </Button>
-              <Button type="submit"> Register </Button>
+        {({ handleSubmit }) => (
+          <Stack
+            as="form"
+            spacing={4}
+            padding={4}
+            width="100%"
+            maxWidth="50rem"
+            alignSelf="center"
+            onSubmit={handleSubmit}
+          >
+            {info && (
+              <Alert status="warning" variant="solid" borderRadius={5}>
+                <AlertIcon />
+                {info}
+              </Alert>
+            )}
+            <ImageInput
+              label="Event picture"
+              picture={picture}
+              setPicture={setPicture}
+            />
+            <TextInput
+              label="Event name"
+              name="name"
+              placeholder="Type the event name here"
+            />
+            <TextInput
+              label="Description"
+              name="description"
+              placeholder="Type the event description here"
+            />
+            <TextInput
+              label="Price"
+              name="price"
+              placeholder="Type the event price here"
+            />
+            <Stack direction="row">
+              <DateInput label="Start date" name="startDate" />
+              <TimeInput label="Start time" name="startTime" />
             </Stack>
-          </Center>
-        </Form>
+            {hasEndDate && (
+              <Stack direction="row">
+                <DateInput label="End date" name="endDate" />
+                <TimeInput label="End time" name="endTime" />
+              </Stack>
+            )}
+            <Button variant="link" onClick={() => setHasEndDate(!hasEndDate)}>
+              {hasEndDate ? "-" : "+"} End date
+            </Button>
+            <Button type="submit"> Register </Button>
+          </Stack>
+        )}
       </Formik>
     </Layout>
   );

@@ -7,7 +7,7 @@ const useUser = () => {
     fetcher
   );
 
-  const logUserOut = async () => {
+  const logOut = async () => {
     try {
       await fetcher("http://localhost:8000/auth/logout");
       mutate();
@@ -17,10 +17,10 @@ const useUser = () => {
   };
 
   return {
-    user: data,
+    data: data,
     isLoading: !error && !data,
     isError: error,
-    logUserOut: logUserOut,
+    logOut: logOut,
     mutate: mutate,
   };
 };

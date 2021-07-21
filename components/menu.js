@@ -13,13 +13,13 @@ const MenuItem = ({ children, to = "/", ...rest }) => {
 };
 
 const Menu = (props) => {
-  const { user, logUserOut } = useUser();
+  const { data: user, logOut } = useUser();
 
   const login = <MenuItem to="/login">LOGIN</MenuItem>;
   const signup = <MenuItem to="/signup">SIGN UP</MenuItem>;
   const profile = <MenuItem to="/profile">{user?.username}</MenuItem>;
   const logout = (
-    <MenuItem to="/" onClick={logUserOut}>
+    <MenuItem to="/" onClick={logOut}>
       LOGOUT
     </MenuItem>
   );

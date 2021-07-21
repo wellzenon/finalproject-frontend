@@ -106,7 +106,7 @@ const SignupForm = () => {
 
     const { ok, json } = await signUp(data);
     setSubmitting(false);
-    ok ? Router.push(`/`) : setInfo(json);
+    ok ? Router.push(`/`) : setInfo(json?.info);
   };
 
   return (
@@ -116,79 +116,79 @@ const SignupForm = () => {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        {({ values }) => (
-          <Form>
+        {({ values, handleSubmit }) => (
+          <Stack
+            as="form"
+            spacing={4}
+            padding={4}
+            width="100%"
+            maxWidth="50rem"
+            alignSelf="center"
+            onSubmit={handleSubmit}
+          >
+            <Icon as={HiUserCircle} boxSize={100} margin="auto" />
+            {info && (
+              <Alert status="warning" variant="solid" borderRadius={5}>
+                <AlertIcon />
+                {info}
+              </Alert>
+            )}
+            <TextInput
+              label="User name"
+              name="username"
+              type="text"
+              placeholder="Type your username here"
+            />
+            <TextInput
+              label="Email Address"
+              name="email"
+              type="email"
+              placeholder="example@site.com"
+            />
+            <TextInput
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="Insert password here"
+            />
+            <TextInput
+              label="Confirm Password"
+              name="confirm"
+              type="password"
+              placeholder="Confirm password here"
+            />
+            <FormLabel>Birthday</FormLabel>
             <Stack
-              spacing={4}
-              padding={4}
-              width="100%"
-              maxWidth="50rem"
-              alignSelf="center"
+              direction="row"
+              border="1px"
+              borderColor="gray.200"
+              borderRadius="md"
+              padding={3}
             >
-              <Icon as={HiUserCircle} boxSize={100} margin="auto" />
-              {info && (
-                <Alert status="warning" variant="solid" borderRadius={5}>
-                  <AlertIcon />
-                  {info}
-                </Alert>
-              )}
-              <TextInput
-                label="User name"
-                name="username"
+              <SelectInput
+                label="Day"
+                name="day"
                 type="text"
-                placeholder="Type your username here"
+                options={days(values)}
+                instanceId="unique"
               />
-              <TextInput
-                label="Email Address"
-                name="email"
-                type="email"
-                placeholder="example@site.com"
+              <SelectInput
+                label="Month"
+                name="month"
+                type="text"
+                options={months}
+                instanceId="unique"
               />
-              <TextInput
-                label="Password"
-                name="password"
-                type="password"
-                placeholder="Insert password here"
+              <SelectInput
+                label="Year"
+                name="year"
+                type="text"
+                options={years}
+                instanceId="unique"
               />
-              <TextInput
-                label="Confirm Password"
-                name="confirm"
-                type="password"
-                placeholder="Confirm password here"
-              />
-              <FormLabel>Birthday</FormLabel>
-              <Stack
-                direction="row"
-                border="1px"
-                borderColor="gray.200"
-                borderRadius="md"
-                padding={3}
-              >
-                <SelectInput
-                  label="Day"
-                  name="day"
-                  type="text"
-                  options={days(values)}
-                  instanceId="unique"
-                />
-                <SelectInput
-                  label="Month"
-                  name="month"
-                  type="text"
-                  options={months}
-                  instanceId="unique"
-                />
-                <SelectInput
-                  label="Year"
-                  name="year"
-                  type="text"
-                  options={years}
-                  instanceId="unique"
-                />
-              </Stack>
-              <Button type="submit"> Register </Button>
             </Stack>
-          </Form>
+            <Button type="submit"> Register </Button>
+          </Stack>
         )}
       </Formik>
     </Layout>
