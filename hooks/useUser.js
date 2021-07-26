@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetcher } from "../lib/fetcher";
+import { fetcher } from "lib";
 
 const useUser = () => {
   const { data, error, mutate } = useSWR(

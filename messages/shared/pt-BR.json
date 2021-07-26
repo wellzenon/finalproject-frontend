@@ -1,0 +1,9 @@
+{
+  "Menu": {
+    "login": "Entrar",
+    "signup": "Registre-se",
+    "logout": "Sair",
+    "profile": "Perfil",
+    "search": "Busca"
+  }
+}

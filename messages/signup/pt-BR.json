@@ -1,0 +1,9 @@
+{
+  "Event": {
+    "date": "Data",
+    "price": "Preço",
+    "description": "Descrição",
+    "comments": "Comentários",
+    "addComment": "COMENTAR"
+  }
+}

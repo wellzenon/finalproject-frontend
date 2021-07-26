@@ -1,0 +1,27 @@
+{
+  "Event": {
+    "date": "Date",
+    "price": "Price",
+    "description": "Description",
+    "comments": "Comments",
+    "addComment": "ADD COMMENT"
+  },
+  "EventForm": {
+    "title": "Create a new event",
+    "name": "Event name",
+    "picture": "Event picture",
+    "selectPicture": "Select event picture",
+    "changePicture": "Change event picture",
+    "clearPicture": "Clear event picture",
+    "description": "Event description",
+    "price": "Price",
+    "startDate": "Start date",
+    "startTime": "Start time",
+    "addEndDate": "Add end date",
+    "removeEndDate": "Remove end date",
+    "endDate": "End date",
+    "endTime": "End time",
+    "addEvent": "Add event",
+    "updateEvent": "Update event"
+  }
+}
